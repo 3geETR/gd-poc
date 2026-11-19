@@ -28,18 +28,25 @@
     }
     iframe { width: 100%; height: 140px; border: 1px dashed #2a2440; border-radius: 10px; background: #0f0d18; display: block; }
     .note { font-size: 13px; color: #a9a2c0; margin: 10px 0 0; }
+    .proxy a {
+      display: block; padding: 12px 14px; border-radius: 10px; background: #241a44;
+      color: #c7b5ff; font-family: ui-monospace, Consolas, monospace; font-size: 12px;
+      line-height: 1.5; word-break: break-all; text-decoration: none; border: 1px solid #3a2f66;
+      transition: border-color .15s ease;
+    }
+    .proxy a:hover { border-color: #6324f0; }
     footer { margin-top: 22px; font-size: 12px; color: #8b84a8; }
   </style>
 </head>
 <body>
   <main>
-    <p class="tag">Yetkili test · geçici yayın</p>
-    <h1>Bu sayfa geçici bir test sunucusunda yayınlanıyor</h1>
+    <p class="tag">Yetkili test · canlı yayın</p>
+    <h1>Bu sayfa GitHub Pages üzerinde yayınlanıyor</h1>
 
     <p>
       Amaç, <code>guidely.com.tr/img</code> proxy'sinin dışarıdan gelen bir SVG'yi
       nasıl servis ettiğini zararsız biçimde göstermek. Bu sayfa ve içeriği
-      <strong>hedef sunucuya yüklenmedi</strong>; yalnızca bu geçici adreste duruyor.
+      <strong>hedef sunucuya yüklenmedi</strong>; yalnızca bu adreste duruyor.
     </p>
 
     <ul>
@@ -51,18 +58,33 @@
     <div class="card">
       <iframe src="proof.svg" title="Zararsız SVG doğrulaması"></iframe>
       <p class="note">
-        Kutu içindeki yazı <strong>“SCRIPT ÇALIŞTI”</strong> ise, bu origin'de SVG içindeki
+        Kutu içindeki yazı <strong>“SCRIPT CALISTI”</strong> ise, bu origin'de SVG içindeki
         script çalışmış demektir. Metin değişmediyse script engellenmiştir.
       </p>
     </div>
 
-    <p>
-      Aynı SVG'yi hedefin proxy'si üzerinden görmek için:
-      <br />
-      <code>https://guidely.com.tr/img?u=&lt;bu-adres&gt;/proof.svg</code>
+    <p>Aynı SVG'yi hedefin proxy'si üzerinden görmek için:</p>
+    <p class="proxy">
+      <a id="proxy-link" href="proof.svg" target="_blank" rel="noopener noreferrer">adres hesaplanıyor…</a>
+    </p>
+    <p class="note">
+      Bu bağlantı, bulunduğun adrese göre otomatik üretilir. Hedefin filtresi yalnızca
+      <code>image/*</code> içeriği geçirdiği için SVG kabul edilir; aynı adrese
+      <code>.html</code> koyarsan <code>502</code> alırsın.
     </p>
 
     <footer>Guidely güvenlik değerlendirmesi · GD-2026-001 · zararsız kanıt sayfası</footer>
   </main>
+
+  <script>
+    (function () {
+      var base = location.origin + location.pathname.replace(/[^/]*$/, "");
+      var svg = base + "proof.svg";
+      var proxy = "https://guidely.com.tr/img?u=" + encodeURIComponent(svg);
+      var a = document.getElementById("proxy-link");
+      a.href = proxy;
+      a.textContent = proxy;
+    })();
+  </script>
 </body>
 </html>
