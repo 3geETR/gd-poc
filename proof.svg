@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="460" height="120" viewBox="0 0 460 120">
+  <rect width="460" height="120" fill="#0f0d18"/>
+  <text id="label" x="20" y="45" fill="#ff8a80" font-family="monospace" font-size="15">script CALISMADI</text>
+  <text x="20" y="75" fill="#8b84a8" font-family="monospace" font-size="11">zararsiz test: token okumaz, ag istegi atmaz</text>
+  <script><![CDATA[
+    document.documentElement.setAttribute('data-exec', '1');
+    var el = document.getElementById('label');
+    if (el) { el.textContent = 'SCRIPT CALISTI'; el.setAttribute('fill', '#7ee2b8'); }
+  ]]></script>
+</svg>

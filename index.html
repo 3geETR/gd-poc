@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Guidely — Yetkili Test Sayfası</title>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px;
+      background: radial-gradient(1200px 600px at 20% 0%, #241a44 0%, #0c0a14 60%);
+      color: #f2eefc; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    main { width: min(760px, 100%); }
+    .tag {
+      display: inline-block; margin: 0 0 16px; padding: 5px 11px; border-radius: 999px;
+      border: 1px solid rgba(199,181,255,.45); color: #c7b5ff;
+      font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+    }
+    h1 { margin: 0 0 12px; font-size: clamp(24px, 4vw, 36px); line-height: 1.15; letter-spacing: -.02em; }
+    p { margin: 0 0 12px; color: #c9c2e2; line-height: 1.6; }
+    ul { margin: 16px 0 20px; padding-left: 20px; color: #c9c2e2; line-height: 1.8; }
+    code { font-family: ui-monospace, Consolas, monospace; background: #241a44; color: #c7b5ff; padding: 1px 6px; border-radius: 5px; }
+    .card {
+      background: #14111f; border: 1px solid #2a2440; border-radius: 16px;
+      padding: 16px; margin: 18px 0;
+    }
+    iframe { width: 100%; height: 140px; border: 1px dashed #2a2440; border-radius: 10px; background: #0f0d18; display: block; }
+    .note { font-size: 13px; color: #a9a2c0; margin: 10px 0 0; }
+    footer { margin-top: 22px; font-size: 12px; color: #8b84a8; }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="tag">Yetkili test · geçici yayın</p>
+    <h1>Bu sayfa geçici bir test sunucusunda yayınlanıyor</h1>
+
+    <p>
+      Amaç, <code>guidely.com.tr/img</code> proxy'sinin dışarıdan gelen bir SVG'yi
+      nasıl servis ettiğini zararsız biçimde göstermek. Bu sayfa ve içeriği
+      <strong>hedef sunucuya yüklenmedi</strong>; yalnızca bu geçici adreste duruyor.
+    </p>
+
+    <ul>
+      <li>Hiçbir dosya hedef sisteme yazılmadı.</li>
+      <li>Token okunmuyor, dışarıya veri gönderilmiyor.</li>
+      <li>Aşağıdaki SVG sadece kendi metnini değiştiriyor.</li>
+    </ul>
+
+    <div class="card">
+      <iframe src="proof.svg" title="Zararsız SVG doğrulaması"></iframe>
+      <p class="note">
+        Kutu içindeki yazı <strong>“SCRIPT ÇALIŞTI”</strong> ise, bu origin'de SVG içindeki
+        script çalışmış demektir. Metin değişmediyse script engellenmiştir.
+      </p>
+    </div>
+
+    <p>
+      Aynı SVG'yi hedefin proxy'si üzerinden görmek için:
+      <br />
+      <code>https://guidely.com.tr/img?u=&lt;bu-adres&gt;/proof.svg</code>
+    </p>
+
+    <footer>Guidely güvenlik değerlendirmesi · GD-2026-001 · zararsız kanıt sayfası</footer>
+  </main>
+</body>
+</html>
